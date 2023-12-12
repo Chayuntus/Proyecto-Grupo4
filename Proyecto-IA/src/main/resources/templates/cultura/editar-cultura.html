@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/editar.css}" />
+    <title>Ver y Editar Cultura</title>
+</head>
+
+<body>
+    <h1>Detalles de la Cultura y Edición</h1>
+
+    <form th:action="@{'/cultura/editar/' + ${cultura.id}}" method="post" th:object="${cultura}">
+        <input type="hidden" id="id" name="id" th:field="*{id}" />
+        <label for="provincia">Provincia:</label>
+        <input type="text" id="provincia" name="provincia" th:field="*{provincia}" required>
+
+        <label for="gastronomia">Gastronomía:</label>
+        <input type="text" id="gastronomia" name="gastronomia" th:field="*{gastronomia}" required>
+
+        <label for="region">Región:</label>
+        <select id="region" name="region" th:field="*{region}" required>
+            <option th:each="reg : ${regiones}" th:value="${reg.id}" th:text="${reg.nombre}"></option>
+        </select>
+
+        <button type="submit">Guardar cambios</button>
+    </form>
+
+    <h2>Detalles de la Cultura</h2>
+    <table>
+    <tr>
+        <td><strong>Provincia:</strong></td>
+        <td th:text="${cultura.provincia}"></td>
+    </tr>
+    <tr>
+        <td><strong>Gastronomía:</strong></td>
+        <td th:text="${cultura.gastronomia}"></td>
+    </tr>
+    <tr>
+        <td><strong>Región:</strong></td>
+        <td th:text="${cultura.region.nombre}"></td>
+    </tr>
+    <tr>
+        <td><strong>Idioma:</strong></td>
+        <td>
+			<div th:each="id:${cultura.idioma}">
+				<span th:text="${id.nombre}"></span>
+			</div>
+		</td>
+    </tr>
+</table>
+
+    <form th:action="@{'/cultura/editar-idioma/' + ${cultura.id}}" method="post" th:object="${idioma}">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" th:field="*{nombre}" required>
+        <input type="hidden" id="provincia_id" name="provincia_id" th:field="*{provincia_id}" required>
+        <button type="submit">Guardar cambios</button>
+    </form>
+    
+	<!--<h2>Lista de Idiomas</h2>
+	<table>
+		<tr>
+			<th>Nombres de Idiomas</th>
+		</tr>
+		<tr th:each="id:${idiomas}">
+			<td th:text="${id.nombre}"></td>
+		</tr>
+	</table>
+	-->
+	
+    <p><a th:href="@{'/cultura/listar'}">Volver a la lista</a></p>
+</body>
+</html>

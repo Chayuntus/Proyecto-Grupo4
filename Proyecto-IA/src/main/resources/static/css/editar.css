@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: rgb(17, 31, 53);
+}
+
+h1 {
+    text-align: center;
+    color:  rgb(182, 1, 55)
+}
+
+form {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: rgb(192, 192, 192) ;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color:  rgb(182, 1, 55);
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: rgb(182, 1, 55);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 auto;
+    display: block;
+}
+
+
+h2 {
+    margin-top: 30px;
+    color:rgb(182, 1, 55)
+}
+
+a{
+	text-decoration: none;
+	color:rgb(182, 1, 55)
+}
+a:hover{
+	color: rgb(255, 0, 0);
+	
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    color: white;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    background-color:rgb(182, 1, 55) ;
+}
+
+th {
+    background-color: rgb(128, 255, 255);
+}
+

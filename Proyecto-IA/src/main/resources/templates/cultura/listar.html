@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/listar.css}" />
+    <title>Listar Culturas</title>
+</head>
+<body>
+	<h1>Guardar cultura</h1>
+ 
+    <form action="/cultura/guardar" method="post">
+
+    <label for="provincia">Provincia:</label>
+    <input type="text" id="provincia" name="provincia" required>
+    <label for="gastronomia">Gastronomía:</label>
+    <input type="text" id="gastronomia" name="gastronomia" required>
+
+    <label for="region">Región:</label>
+<select id="region" name="region" required>
+    <option value="" disabled selected>-- Seleccione una región --</option>
+    <option th:each="reg : ${regiones}" th:value="${reg.id}" th:text="${reg.nombre}"></option>
+</select>
+
+
+    <button type="submit">Guardar</button>
+    </form>
+	
+	
+    <h1>Culturas</h1>
+ 
+    <table>
+        <thead>
+            <tr>
+                <th>Provincia</th>
+                <th>Gastronomia</th>
+                <th>Region</th>
+                <th>Idioma</th>
+                <th>Ver</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="c : ${cul}">
+                <td th:text="${c.provincia}"></td>
+                <td th:text="${c.gastronomia}"></td>
+                <td th:text="${c.region.nombre}"></td>
+                <th>
+					<div th:each="idio: ${c.idioma}">
+						<span th:text="${idio.nombre}"></span>
+					</div>
+				</th>
+                <td><a class="boton" th:href="@{'/cultura/editar/' + ${c.id}}"><button>Ver</button></a></td>
+                <td><a class="boton" th:href="@{'/cultura/eliminar/' + ${c.id}}"><button>Eliminar</button></a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
